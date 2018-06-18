@@ -1,11 +1,13 @@
 ofxSoundObjects
 =====================================
-MODIFICATIONS :
-Removed Apple libraries in libs (was messing up compilation with QT on linux).
-Added ofxTwoChannelFader class:
-	Connect ofSoundFileObjects to it and it'll do a 1 buffer crossfade between them
-	It handles starting and stopping the playback internally so the logic is a little ugly 
-Removed setting the relative speed because it was messing up playback for 48000 Hz sample  rate audio files
+
+###MODIFICATIONS :
+
+*Removed Apple libraries in libs (was messing up compilation with QT on linux).
+*Added ofxTwoChannelFader class:
+*Connect ofSoundFileObjects to it and it'll do a 1 buffer crossfade between them
+*It handles starting and stopping the playback internally so the logic is a little ugly 
+*Removed setting the relative speed because it was messing up playback for 48000 Hz sample  rate audio files
 
 This is an addon version for the ofSoundObject implementation originally conceived at the 2013 OFDev Conference held at the Yamaguchi Center For Arts and Media, Japan.
 The developers involved in this were:
