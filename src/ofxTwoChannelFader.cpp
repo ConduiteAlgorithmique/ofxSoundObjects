@@ -21,16 +21,18 @@ ofxTwoChannelFader::ofxTwoChannelFader(){
 }
 
 void ofxTwoChannelFader::create_fades(int buffer_size, int num_channels){
-    fadeIn.resize(buffer_size);
-    fadeOut.resize(buffer_size);
+    fadeIn.resize(buffer_size*num_channels);
+    fadeOut.resize(buffer_size*num_channels);
 
     int half_buffer =buffer_size/2;
+    int index =0;
     for (int i =0; i <half_buffer; i++){
-        fadeOut[i] = 1.0 -float(i)/half_buffer;
-        fadeIn[half_buffer +i] = float(i)/half_buffer;
+        for (int c = 0; c<num_channels; c++){
+            fadeOut[index] = 1.0 -float(i)/half_buffer;
+            fadeIn[half_buffer*num_channels +index] = float(i)/half_buffer;
+            index++;
+        }
     }
-
-
 }
 
 //----------------------------------------------------
@@ -185,7 +187,6 @@ void ofxTwoChannelFader::audioOut(ofSoundBuffer &output) {
             for (int j = 0; j < tempBuffer.size(); j++) {
                 output.getBuffer()[j] += tempBuffer.getBuffer()[j]*fadeOut[j] +currentBuffer.getBuffer()[j]*fadeIn[j];
             }
-
             channels[last_channel]->stop();
         }
     }
