@@ -19,7 +19,7 @@
 class ofxSoundPlayerObject:  public ofxSoundObject {
 public:
 	ofxSoundPlayerObject();
-	bool load(std::filesystem::path filePath, bool stream = false);
+    bool load(std::filesystem::path filePath, bool stream = false);
 	void unload();
 	int play();// when play is called and multiplay enabled a new playing instance is setup and it's index returned. If it is not possible to play -1 is returned;
 	void stop(size_t index =0);
@@ -77,6 +77,7 @@ public:
 	bool canPlayInstance();
 	void drawDebug(float x, float y);
 	size_t getNumInstances() { return instances.size(); }
+
 private:
 	void audioOutBuffersChanged( int nFrames, int nChannels, int sampleRate );
 	void audioOut(ofSoundBuffer& outputBuffer);

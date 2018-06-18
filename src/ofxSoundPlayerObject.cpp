@@ -36,8 +36,8 @@ bool ofxSoundPlayerObject::canPlayInstance(){
 }
 //--------------------------------------------------------------
 bool ofxSoundPlayerObject::load(std::filesystem::path filePath, bool _stream){
-	instances.clear();
-	bIsLoaded = soundFile.load(filePath.string());
+    instances.clear();
+    bIsLoaded = soundFile.load(filePath.string());
 	if(!bIsLoaded) return false;
 
     ofLogVerbose("ofxSoundPlayerObject") << "Loading file : " << filePath.string();
@@ -51,7 +51,7 @@ bool ofxSoundPlayerObject::load(std::filesystem::path filePath, bool _stream){
 		soundFile.readTo(buffer);
 		ofLogVerbose() << "Not streaming; Reading whole file into memory! ";
 	}
-	volume.setName(ofFilePath::getBaseName(filePath));
+    volume.setName(ofFilePath::getBaseName(filePath.string()));
     playerNumChannels = soundFile.getNumChannels();
     playerSampleRate = soundFile.getSampleRate();
 	return true;
@@ -86,7 +86,7 @@ int ofxSoundPlayerObject::play() {
 					index = i.id;
 					setSpeed(1, index);
 					bFound = true;
-					break;
+                    break;
 				}
 			}
 			if(!bFound && maxSounds > instances.size()){
@@ -103,7 +103,7 @@ int ofxSoundPlayerObject::play() {
             }
 			setPosition(0,0);//Should the position be set to zero here? I'm not sure.
             instances[0].id = 0;
-			setSpeed(1, 0);
+            setSpeed(1., 0);
 			index = 0;
 		}
 		if(bCanPlay){
@@ -164,7 +164,7 @@ void ofxSoundPlayerObject::drawDebug(float x, float y){
         ss << "    id: " << instances[i].id << endl;
     }
     
-    ofDrawBitmapStringHighlight(ss.str(), 10,20);
+    ofDrawBitmapStringHighlight(ss.str(), x,y);
 }
 //--------------------------------------------------------------
 void ofxSoundPlayerObject::audioOut(ofSoundBuffer& outputBuffer){
@@ -238,7 +238,7 @@ void ofxSoundPlayerObject::setSpeed(float spd, int index){
 	}
     updateInstance([&](soundPlayInstance& inst){
         	inst.speed = spd;
-            inst.relativeSpeed = spd*(double(soundFile.getSampleRate())/double(playerSampleRate));
+            inst.relativeSpeed = spd; //spd*(double(soundFile.getSampleRate())/double(playerSampleRate));
     },index, "ofxSoundPlayerObject::setSpeed");
 }
 //--------------------------------------------------------------

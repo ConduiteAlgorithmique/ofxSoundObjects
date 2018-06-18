@@ -99,6 +99,7 @@ float ofxSoundMixer::getChannelVolume(int channelNumber){
     return 0;
 }
 
+
 //----------------------------------------------------
 // this pulls the audio through from earlier links in the chain and sums up the total output
 void ofxSoundMixer::audioOut(ofSoundBuffer &output) {
