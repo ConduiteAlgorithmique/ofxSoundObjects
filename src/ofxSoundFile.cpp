@@ -74,7 +74,7 @@ ofxSoundFile::~ofxSoundFile() {
 
 //--------------------------------------------------------------
 bool ofxSoundFile::load(string _path){
-    path = ofToDataPath(_path, True);
+    path = ofToDataPath(_path, true);
 	bool result = false;
 	if(ofFilePath::getFileExt(path)=="mp3"){
         bCompressed=true;

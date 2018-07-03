@@ -72,7 +72,7 @@ void  ofxTwoChannelFader::fadeTo(ofxSoundPlayerObject *obj){
     for (int i =0; i<channels.size(); i++) {
         if (obj == channels[i]) {
             ofLogNotice("ofxSoundMixer::setInput") << " already connected" << endl;
-            same_input= True;
+            same_input= true;
             current_channel = i;
             return;
         }
@@ -168,7 +168,7 @@ void ofxTwoChannelFader::audioOut(ofSoundBuffer &output) {
             for (int j = 0; j < tempBuffer.size(); j++) {
                 output.getBuffer()[j] += tempBuffer.getBuffer()[j] * fadeIn[j] +currentBuffer.getBuffer()[j]*fadeOut[j];
             }
-            same_input = False;
+            same_input = false;
         }
         //Case 3 : no last channel
         else if (channels[last_channel] == NULL){
