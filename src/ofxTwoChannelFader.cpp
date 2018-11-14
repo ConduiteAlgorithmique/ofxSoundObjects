@@ -3,7 +3,6 @@
  *
  *  Created by Marek Bereza on 10/08/2013.
  */
-
 #include "ofxTwoChannelFader.h"
 //----------------------------------------------------
 ofxTwoChannelFader::ofxTwoChannelFader(){
@@ -190,5 +189,10 @@ void ofxTwoChannelFader::audioOut(ofSoundBuffer &output) {
             channels[last_channel]->stop();
         }
     }
+    interfacePointer->receiveBuffer(output);
+}
+
+void ofxTwoChannelFader::setInterfacePointer(shared_ptr<ofApp> p){
+   interfacePointer = p;
 }
 //----------------------------------------------------

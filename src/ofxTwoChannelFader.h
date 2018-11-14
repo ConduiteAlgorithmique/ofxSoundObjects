@@ -6,6 +6,8 @@
 #include "ofMain.h"
 #include "ofxSoundObject.h"
 #include "ofxSoundPlayerObject.h"
+#include "ofApp.h"
+
 /**
  * This class represents a simple mixer which adds together the output
  * of multiple chains of ofxSoundObjects
@@ -34,7 +36,8 @@ public:
     ofParameter<float> masterVol;
     void  fadeTo(ofxSoundPlayerObject *obj);
     void create_fades(int buffer_size, int num_channels);
-
+    void setInterfacePointer(shared_ptr<ofApp> p);
+    shared_ptr<ofApp> interfacePointer;
 
 
 protected:
