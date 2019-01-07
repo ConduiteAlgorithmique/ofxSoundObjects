@@ -213,13 +213,13 @@ bool ofxSoundFile::mpg123Open(string path){
 bool ofxSoundFile::sfOpen(string path){
 
 	SF_INFO sfInfo;
-	ofLogNotice() << "opening descriptor " << path;
+//	ofLogNotice() << "opening descriptor " << path;
 	sndFile = sf_open(path.c_str(),SFM_READ,&sfInfo);
 	if(!sndFile){
 		ofLogError() <<  "ofxSoundFile: couldnt read " + path;
 		return false;
 	}
-	ofLogNotice() << "odescriptor opened ";
+//	ofLogNotice() << "odescriptor opened ";
 
 	subformat = sfInfo.format & SF_FORMAT_SUBMASK ;
 	if (subformat == SF_FORMAT_FLOAT || subformat == SF_FORMAT_DOUBLE){
